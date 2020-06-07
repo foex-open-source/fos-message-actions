@@ -1,0 +1,45 @@
+{
+    "name":"FOS - Message Actions"
+   ,"version":"20.1.0"
+   ,"description":"\u003Cp\u003EA set of actions which handle client-side display and management of messages such as success and error notifications.\u003C\/p\u003E"
+   ,"keywords":[
+        "notification"
+       ,"success"
+       ,"error"
+    ]
+   ,"license":"MIT"
+   ,"homepage":"https:\/\/foex.at\/fos"
+   ,"author":{
+        "name":"FOEX GmbH"
+       ,"email":"office@fos.world"
+       ,"url":"https:\/\/fos.world\/"
+       ,"twitter":"@foexopensource"
+    }
+   ,"repository":{
+        "type":"git"
+       ,"url":"https:\/\/github.com\/foex-open-source\/fos-message-actions.git"
+    }
+   ,"oracle":{
+        "versions":[
+            "11.2.0.4"
+           ,"12.1.0.1"
+           ,"12.2.0.1"
+           ,"18.0.0.0"
+           ,"19.0.0.0"
+        ]
+       ,"apex":{
+            "versions":[
+                "19.2.0"
+               ,"20.1.0"
+            ]
+           ,"plugin":{
+                "internalName":"COM.FOS.MESSAGE_ACTIONS"
+               ,"type":"dynamic action"
+               ,"demo":"https:\/\/fos.world\/ords\/f?p=1000:1030"
+               ,"previewImage":"https:\/\/fos.world\/ords\/fos_master_ws\/fos-image\/COM.FOS.MESSAGE_ACTIONS"
+            }
+        }
+    }
+}
+
+
