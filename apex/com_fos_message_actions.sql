@@ -37,9 +37,9 @@ prompt APPLICATION 102 - FOS Dev
 --     PLUGIN: 8354320589762683
 --     PLUGIN: 50031193176975232
 --     PLUGIN: 34175298479606152
---     PLUGIN: 2657630155025963
 --     PLUGIN: 35822631205839510
 --     PLUGIN: 14934236679644451
+--     PLUGIN: 2657630155025963
 --   Manifest End
 --   Version:         19.2.0.00.18
 --   Instance ID:     250144500186934
@@ -155,15 +155,7 @@ wwv_flow_api.create_plugin(
 ,p_plugin_comment=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '// Settings for the FOS browser extension',
 '@fos-auto-return-to-page',
-'@fos-auto-open-files:js/script.js',
-'',
-'// Export',
-'@fos-export',
-'',
-'// Attributes for the apexplugin.json file',
-'@fos-keywords:notification,success,error',
-'@fos-github-slug:fos-message-actions',
-'@fos-demo-page-id:1030'))
+'@fos-auto-open-files:js/script.js'))
 ,p_files_version=>93
 );
 wwv_flow_api.create_plugin_attribute(
