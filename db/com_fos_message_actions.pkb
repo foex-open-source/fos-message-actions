@@ -1,5 +1,6 @@
-CREATE OR REPLACE PACKAGE BODY COM_FOS_MESSAGE_ACTIONS
-IS
+create or replace package body com_fos_message_actions
+as
+
 function render
     ( p_dynamic_action apex_plugin.t_dynamic_action
     , p_plugin         apex_plugin.t_plugin
@@ -84,7 +85,8 @@ begin
     apex_json.free_output;
     return l_result;
 end;
-END COM_FOS_MESSAGE_ACTIONS;
+
+end;
 /
 
 

@@ -3,9 +3,12 @@
    ,"version":"20.1.0"
    ,"description":"\u003Cp\u003EA set of actions which handle client-side display and management of messages such as success and error notifications.\u003C\/p\u003E"
    ,"keywords":[
-        "notification"
+        "dynamic action"
+       ,"message"
+       ,"notification"
        ,"success"
        ,"error"
+       ,"alert"
     ]
    ,"license":"MIT"
    ,"homepage":"https:\/\/foex.at\/fos"
