@@ -1,17 +1,23 @@
+
+
 {
     "name":"FOS - Message Actions"
    ,"version":"20.1.0"
-   ,"description":"\u003Cp\u003EA set of actions which handle client-side display and management of messages such as success and error notifications.\u003C\/p\u003E"
+   ,"description":"Show or hide success and error messages declaratively.\r\n\u003Ch4\u003EFree Plug-in under MIT License\u003C\/h4\u003E\r\n\u003Cp\u003E\r\nAll FOS plug-ins are released under MIT License, which essentially means it is free for everyone to use, no matter if commercial or private use. \r\n\u003C\/p\u003E\r\n\u003Ch4\u003EOverview\u003C\/h4\u003E\r\n\u003Cp\u003EThe \u003Cstrong\u003EFOS - Message Actions\u003C\/strong\u003E dynamic action plug-in is an easy and declarative way to deal with APEX success and error messages. It can show errors inline with fields and in notifications, as well as showing page level messages that look the same as regular APEX page notifications. Internally we use the same Javascript API that APEX provides to show these messages.\u003C\/p\u003E\n\u003Cp\u003EThe message can be a static string with optional page item substitutions, or derived from a Javascript expression or function.\u003C\/p\u003E\n\u003Cp\u003EYou also have control over how escaping should be performed on the message. Either entirely, or only for certain page items if your message contains HTML markup.\u003C\/p\u003E"
    ,"keywords":[
-        "dynamic action"
-       ,"message"
+        "message"
        ,"notification"
        ,"success"
        ,"error"
        ,"alert"
     ]
    ,"license":"MIT"
-   ,"homepage":"https:\/\/foex.at\/fos"
+   ,"commercial":"Yes"
+   ,"homepage":"https:\/\/foex.at\/fos\/"
+   ,"bugs":{
+        "url":"https:\/\/github.com\/foex-open-source\/fos-message-actions\/issues"
+       ,"email":"support@fos.world"
+    }
    ,"author":{
         "name":"FOEX GmbH"
        ,"email":"office@fos.world"
@@ -24,8 +30,7 @@
     }
    ,"oracle":{
         "versions":[
-            "11.2.0.4"
-           ,"12.1.0.1"
+            "12.1.0.1"
            ,"12.2.0.1"
            ,"18.0.0.0"
            ,"19.0.0.0"
@@ -38,11 +43,13 @@
            ,"plugin":{
                 "internalName":"COM.FOS.MESSAGE_ACTIONS"
                ,"type":"dynamic action"
-               ,"demo":"https:\/\/fos.world\/ords\/f?p=1000:1030"
+               ,"demo":"https:\/\/fos.world\/ords\/f?p=10000:1030"
                ,"previewImage":"https:\/\/fos.world\/ords\/fos_master_ws\/fos-image\/COM.FOS.MESSAGE_ACTIONS"
             }
         }
     }
 }
+
+
 
 
