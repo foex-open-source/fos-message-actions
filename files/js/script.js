@@ -1,5 +1,3 @@
-
-
 /* globals apex */
 
 var FOS = window.FOS || {};
@@ -16,6 +14,7 @@ FOS.message = FOS.message || {};
  * @param {number}   [config.config.duration]       Amount of milliseconds after that the page success message should automatically be dismissed
  * @param {string}   [config.location]              Where to display the error message, on page, inline, both
  * @param {string}   [config.pageItem]              Name of the page item which the error message should be associated with
+ * @param {string}   [config.pageItems]             Name of the page items which the error message should be cleared for
  * @param {function} [initFn]                       Javascript Initialization Code Function, it can be undefined
 */
 FOS.message.action = function (daContext, config, initFn) {
@@ -71,7 +70,7 @@ FOS.message.action = function (daContext, config, initFn) {
             FOS.message.showError(message, config.config);
             break;
         case 'clearErrors':
-            FOS.message.clearErrors();
+            FOS.message.clearErrors(config.pageItems);
             break;
     }
 };
@@ -157,10 +156,15 @@ FOS.message.showError = function (message, config) {
     }
 };
 
-FOS.message.clearErrors = function () {
-    apex.message.clearErrors();
+FOS.message.clearErrors = function (pageItems) {
+    // check if we are clearing 1 or more page items if not we then clear everything
+    if (Array.isArray(pageItems) && pageItems.length > 0) {
+        pageItems.forEach(function (item, index) {
+            if (item) apex.message.clearErrors(item.trim());
+        })
+    } else {
+        apex.message.clearErrors();
+    }
 };
-
-
 
 

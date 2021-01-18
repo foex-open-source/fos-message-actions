@@ -1,5 +1,3 @@
-
-
 create or replace package body com_fos_message_actions
 as
 
@@ -31,6 +29,7 @@ as
     l_js_code              p_dynamic_action.attribute_04%type := p_dynamic_action.attribute_04;
     l_escape               boolean                            := p_dynamic_action.attribute_05 = 'Y';
     l_autodismiss          boolean                            := p_dynamic_action.attribute_08 = 'Y';
+    l_clear_items          apex_t_varchar2                    := case when p_dynamic_action.attribute_11 is not null then apex_string.split(p_dynamic_action.attribute_11, ',') else apex_t_varchar2() end;
 
     -- Javascript Initialization Code
     l_init_js_fn           varchar2(32767)                    := nvl(apex_plugin_util.replace_substitutions(p_dynamic_action.init_javascript_code), 'undefined');
@@ -120,6 +119,7 @@ begin
 
         when 'clear-errors' then
             apex_json.write('actionType'  , 'clearErrors');
+            apex_json.write('pageItems'   , l_clear_items);
     end case;
 
     apex_json.close_object;
@@ -133,7 +133,5 @@ end render;
 
 end;
 /
-
-
 
 
