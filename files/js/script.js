@@ -9,12 +9,14 @@ FOS.message = FOS.message || {};
  * @param {object}   daContext                      Dynamic Action context as passed in by APEX
  * @param {object}   config                         Configuration object holding the message configuration
  * @param {string}   config.message                 String or JS function returning the message text
- * @param {string}   config.actionType              One of: showPageSuccess|hidePageSuccess|showError|clearErrors
+ * @param {string}   config.actionType              One of: showPageSuccess|hidePageSuccess|showError|clearErrors|clearError
  * @param {boolean}  [config.escape]                Whether to escape the message text
  * @param {number}   [config.config.duration]       Amount of milliseconds after that the page success message should automatically be dismissed
  * @param {string}   [config.location]              Where to display the error message, on page, inline, both
  * @param {string}   [config.pageItem]              Name of the page item which the error message should be associated with
  * @param {string}   [config.pageItems]             Name of the page items which the error message should be cleared for
+ * @param {boolean}  config.clearSuccess            Whether to auto-clear success messages
+ * @param {boolean}  config.clearError              Whether to auto-clear error messages
  * @param {function} [initFn]                       Javascript Initialization Code Function, it can be undefined
 */
 FOS.message.action = function (daContext, config, initFn) {
@@ -71,6 +73,9 @@ FOS.message.action = function (daContext, config, initFn) {
             break;
         case 'clearErrors':
             FOS.message.clearErrors(config.pageItems);
+            break;
+        case 'clearMessage':
+            FOS.message.clearMessage(config.clearSuccess, config.clearError, config.hideAfter);
             break;
     }
 };
@@ -166,5 +171,63 @@ FOS.message.clearErrors = function (pageItems) {
         apex.message.clearErrors();
     }
 };
+
+FOS.message.clearMessage = function(clearSuccess, clearError, hideAfter){
+    const SUCCESS_SELECTOR = 'APEX_SUCCESS_MESSAGE';
+    const ERROR_SELECTOR = 'APEX_ERROR_MESSAGE';
+
+    const successEl = document.getElementById(SUCCESS_SELECTOR);
+    const errorEl = document.getElementById(ERROR_SELECTOR);
+
+    const VISIBLE_CLS = 'u-visible';
+    const HIDDEN_CLS = 'u-hidden';
+
+    apex.message.setThemeHooks({
+        beforeShow: function(msgType, msgEl){
+            console.log(msgEl);
+            if((clearSuccess && msgType == 'success') || (clearError && msgType === 'error')){
+                setTimeout(function(){
+                    msgEl.removeClass(VISIBLE_CLS).addClass(HIDDEN_CLS);
+                }, hideAfter);
+            }
+        }
+    })
+
+    // const observerConfig = {
+    //     attributes: true,
+    //     attributeFilter: ['class'],
+    //     childList: true,
+    //     subtree: false
+    // };
+
+    // const callback = function(mutationsList, observer){
+    //     console.log('mutationList', mutationsList);
+    //     for(const mutation of mutationsList){
+    //         if(mutation.type === 'childList'){
+    //             if(mutation.addedNodes.length > 0){
+    //                 console.log('A Node has been added', mutation.addedNodes[0]);
+    //                 console.log(mutation);
+    //             }
+
+    //             if(mutation.removedNodes.length > 0){
+    //                 console.log('A Node has been removed', mutation.removedNodes[0]);
+    //                 console.log(mutation);
+    //             }
+    //         }
+    //     }
+    // }
+
+    // const observer = new MutationObserver(callback);
+
+    // if(clearSuccess && successEl){
+    //     observer.observe(successEl,observerConfig);
+    // }
+
+    // if(clearError && errorEl){
+    //     observer.observe(errorEl,observerConfig);
+    // }
+
+}
+
 
 

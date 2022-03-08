@@ -42,9 +42,15 @@ as
     -- success configuration
     l_duration             p_dynamic_action.attribute_09%type := p_dynamic_action.attribute_09;
 
+    -- message types to clear
+    l_clear_success        boolean                            := instr(nvl(p_dynamic_action.attribute_12,' '), 'success') > 0;
+    l_clear_error          boolean                            := instr(nvl(p_dynamic_action.attribute_12,' '), 'error'  ) > 0;
+    l_hide_after           pls_integer                        := p_dynamic_action.attribute_13;
+
+
 begin
     -- standard debugging intro, but only if necessary
-    if apex_application.g_debug
+    if apex_application.g_debug and substr(:DEBUG,6) >= 6
     then
         apex_plugin_util.debug_dynamic_action
           ( p_plugin         => p_plugin
@@ -120,6 +126,11 @@ begin
         when 'clear-errors' then
             apex_json.write('actionType'  , 'clearErrors');
             apex_json.write('pageItems'   , l_clear_items);
+        when 'clear-message' then
+            apex_json.write('actionType'  , 'clearMessage');
+            apex_json.write('clearSuccess', l_clear_success);
+            apex_json.write('clearError'  , l_clear_error);
+            apex_json.write('hideAfter'   , l_hide_after * 1000);
     end case;
 
     apex_json.close_object;
