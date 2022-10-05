@@ -1,6 +1,6 @@
 {
     "name":"FOS - Message Actions"
-   ,"version":"21.2.0"
+   ,"version":"22.1.0"
    ,"description":"Show or hide success and error messages declaratively.\r\n\u003Ch4\u003EFree Plug-in under MIT License\u003C\/h4\u003E\r\n\u003Cp\u003E\r\nAll FOS plug-ins are released under MIT License, which essentially means it is free for everyone to use, no matter if commercial or private use. \r\n\u003C\/p\u003E\r\n\u003Ch4\u003EOverview\u003C\/h4\u003E\r\n\u003Cp\u003EThe \u003Cstrong\u003EFOS - Message Actions\u003C\/strong\u003E dynamic action plug-in is an easy and declarative way to deal with APEX success and error messages. It can show errors inline with fields and in notifications, as well as showing page level messages that look the same as regular APEX page notifications. Internally we use the same Javascript API that APEX provides to show these messages.\u003C\/p\u003E\r\n\u003Cp\u003EThe message can be a static string with optional page item substitutions, or derived from a Javascript expression or function.\u003C\/p\u003E\r\n\u003Cp\u003EYou also have control over how escaping should be performed on the message. Either entirely, or only for certain page items if your message contains HTML markup.\u003C\/p\u003E"
    ,"keywords":[
         "message"

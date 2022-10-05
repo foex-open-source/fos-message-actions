@@ -230,7 +230,7 @@ wwv_flow_api.create_plugin(
 ||'look the same as regular APEX page notifications. Internally we use the same Javascript API that APEX provides to show these messages.</p>',
 '<p>The message can be a static string with optional page item substitutions, or derived from a Javascript expression or function.</p>',
 '<p>You also have control over how escaping should be performed on the message. Either entirely, or only for certain page items if your message contains HTML markup.</p>'))
-,p_version_identifier=>'21.2.0'
+,p_version_identifier=>'22.1.0'
 ,p_about_url=>'https://fos.world'
 ,p_plugin_comment=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '// Settings for the FOS browser extension',
@@ -295,8 +295,7 @@ wwv_flow_api.create_plugin_attr_value(
 ,p_display_sequence=>50
 ,p_display_value=>'Auto Dismiss Message(s)'
 ,p_return_value=>'clear-message'
-,p_help_text=>'<p>Select this option (and execute it on Page Load) to automatically dismiss success/error messages after a specified time - set the <i>"hideAfter"</i> property in the <i>JavaScript Initialization Code</i> to the required value in milliseconds. Defau'
-||'lt is 3000. </p>'
+,p_help_text=>'<p>Select this option (and execute it on Page Load) to automatically dismiss success/error messages after a specified time.</p>'
 );
 wwv_flow_api.create_plugin_attribute(
  p_id=>wwv_flow_api.id(106298738074956061)
